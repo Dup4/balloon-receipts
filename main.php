@@ -63,9 +63,9 @@ function notification_text(array $contest, string $teamname, ?string $location,
         "座位:  " . (empty($location) ? "无" : $location) . "\n" .
         "气球:  " . $problem . "\n" .
         "颜色:  " . $color . "\n" .
-        "备注:  " . ($comment ? "无" : $comment) . "\n" .
+        "备注:  " . ($comment ? $comment : "无") . "\n" .
 
-        "\n\n-----------------------------------------------\n\n" .
+        "\n-----------------------------------------------\n" .
 
         "队伍:  " . $teamname . "\n" .
         "比赛:  " . $contest['name'] . " (" .$contest['id']. ")\n" .
@@ -73,7 +73,7 @@ function notification_text(array $contest, string $teamname, ?string $location,
         "本队当前气球状态:\n";
 
         foreach ($probs_solved as $probid => $color) {
-            $ret .= " - " . $probid . " (colour: " . convertToColor($color['rgb']) . ")\n";
+            $ret .= " - " . $probid . " (color: " . convertToColor($color['rgb']) . ")\n";
         }
 
     return $ret;
@@ -255,7 +255,7 @@ while (true) {
 
                 $printer -> cut();
 
-                $printer -> text("\n\n\n\n\n\n");
+                $printer -> text("\n\n\n\n");
                 $printer -> feed(2);
             } catch (Exception $e) {
                 warning("Couldn't print error: ". $e ->getMessage() . "\n");
