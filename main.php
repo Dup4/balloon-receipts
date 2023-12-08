@@ -70,7 +70,6 @@ function notification_text(array $contest, string $teamname, ?string $location,
         "队伍:  " . $teamname . "\n" .
         "比赛:  " . $contest['name'] . " (" .$contest['id']. ")\n" .
 
-        (empty($color) ? "" : " (colour: ".$color.")") . "\n\n" .
         "本队当前气球状态:\n";
 
         foreach ($probs_solved as $probid => $color) {
@@ -226,7 +225,7 @@ while (true) {
 
                 $printer -> textChinese("气球运输单\n");
                 $printer -> feed(1);
-                $printer -> textChinese("订单ID:".$row['balloonid']."\n");
+                $printer -> textChinese("订单ID: " . $row['balloonid'] . "\n");
                 $printer -> feed(2);
 
                 // $printer -> textChinese(
