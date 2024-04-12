@@ -225,7 +225,7 @@ while (true) {
 
                 $printer -> textChinese("气球运输单\n");
                 $printer -> feed(1);
-                $printer -> textChinese("订单ID: " . $row['balloonid'] . "\n");
+                $printer -> textChinese("ID:".$row['balloonid']."\n");
                 $printer -> feed(2);
 
                 // $printer -> textChinese(
@@ -247,16 +247,11 @@ while (true) {
                     $row['awards']
                 ));
 
-                $printer -> text("\n\n");
-                $printer -> text("-----------------------------------------------");
-                $printer -> text("\n\n");
-
-                $printer -> feed(3);
-
-                $printer -> cut();
-
-                $printer -> text("\n\n\n\n");
                 $printer -> feed(2);
+                $printer -> text("-----------------------------------------------");
+                $printer -> feed(4);
+                $printer -> cut();
+                $printer -> feed(4);
             } catch (Exception $e) {
                 warning("Couldn't print error: ". $e ->getMessage() . "\n");
             } finally {
